@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="@drawable/_5840_5_pizza_slice"
+
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:theme="@style/Theme.PizzaParty"
+
+    tools:context="com.zybooks.pizzaparty.MainActivity">
+
+    <!--displays the textbox that displays the message to the user "Number of people?"
+        wrap_content will make the object(textbox) as big as it takes to show the 'text'
+        -->
+    <TextView
+        android:id="@+id/num_people_eating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/num_attend_edit_text"
+        android:text="@string/number_of_people"
+        android:textSize="@dimen/label_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--editText displays to the right of num_people_eating textView,
+        user inputs the number of people eating
+    -->
+    <EditText
+        android:id="@+id/num_attend_edit_text"
+        android:layout_width="60dp"
+        android:layout_height="59dp"
+        android:ems="5"
+        android:hint="@string/_10"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/num_people_eating"
+        app:layout_constraintLeft_toRightOf="@id/num_people_eating" />
+
+    <!--nested LinearLayout inside the ConstraintLayout
+        encompasses the howHungry textView and the how hungry selection
+     -->
+
+
+    <LinearLayout
+        android:id="@+id/how_hungry_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/num_people_eating"
+        tools:layout_editor_absoluteX="57dp">
+
+        <TextView
+            android:id="@+id/how_hungry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/hungry_radio_group"
+            android:text="@string/how_hungry"
+            android:textAlignment="center"
+            android:textSize="40sp" />
+
+        <RadioGroup
+            android:id="@+id/hungry_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#FFEB3B"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/light_radio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/light" />
+
+            <RadioButton
+                android:id="@+id/medium_radio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/medium" />
+
+            <RadioButton
+                android:id="@+id/ravenous_radio_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ravenous" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/calc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="calculateClick"
+        android:text="@string/calculate"
+        android:theme="@style/calc_button_style"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/how_hungry_linear_layout" />
+
+    <TextView
+        android:id="@+id/num_pizzas_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#FFEB3B"
+        android:paddingBottom="16dp"
+        android:text="@string/total_pizzas"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/calc_button"
+        app:layout_constraintLeft_toRightOf="@+id/calc_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
